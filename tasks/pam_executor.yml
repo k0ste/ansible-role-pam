@@ -1,0 +1,7 @@
+---
+- include: deploy_pam.yml
+  with_items: "{{ vars['pam_services'] }}"
+  loop_control:
+    loop_var: "outer_item"
+  when:
+  - "vars['pam_services'] is defined"

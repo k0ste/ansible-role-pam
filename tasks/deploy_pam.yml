@@ -1,0 +1,12 @@
+---
+- name: pam | Deploy pam services
+  template:
+    src: "pam.j2"
+    dest: "{{ '/etc/pam.d/' + vars['outer_item'] }}"
+    group: "root"
+    owner: "root"
+    mode: "0644"
+    force: "yes"
+  with_items: "{{ hostvars[inventory_hostname]['pam'] | json_query(\"[?service=='\" + vars['outer_item'] + \"']\") }}"
+  loop_control:
+    label: "{{ outer_item }}"
