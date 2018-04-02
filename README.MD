@@ -1,16 +1,12 @@
-ansible-pam
-=============
+# ansible-pam
 
 Deploy pam - Pluggable Authentication Modules for Linux.
 
-Requirements
----------------
+## Requirements
 
-* Ansible 2.2;
-* jmespath;
+* Ansible 2.4;
 
-Example configuration
--------------------------
+## Example configuration
 
 ```yaml
 ---

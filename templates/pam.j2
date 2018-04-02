@@ -7,7 +7,8 @@
   and (p.control is defined and p.control != '')
   and (p.module_path is defined and p.module_path != '') %}
 {% if p.module_arguments is defined and p.module_arguments != '' %}
-{{ p.type + ' ' + p.control + ' ' + p.module_path + ' ' + p.module_arguments | join( ' ' ) }}
+{{ p.type + ' ' + p.control + ' ' + p.module_path + ' ' +
+   p.module_arguments | join( ' ' ) }}
 {% else %}
 {{ p.type + ' ' + p.control + ' ' + p.module_path }}
 {% endif %}

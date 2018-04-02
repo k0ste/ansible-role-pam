@@ -1,3 +1,6 @@
 ---
-- include: pre_requisite.yml
-- include: pam_executor.yml
+- include_tasks: pre_requisite.yml
+  when:
+  - "hostvars[inventory_hostname]['pam'] is defined"
+  - "hostvars[inventory_hostname]['pam'] != ''"
+- include_tasks: pam_executor.yml
