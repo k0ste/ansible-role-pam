@@ -1,6 +1,6 @@
 ---
 - include_tasks: deploy_pam.yml
-  with_items: "{{ vars['pam_services'] }}"
+  loop: "{{ vars['pam_services'] | flatten(levels=1) }}"
   loop_control:
     loop_var: "outer_item"
   when:

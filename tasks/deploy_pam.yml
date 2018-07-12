@@ -7,7 +7,8 @@
     owner: "root"
     mode: "0644"
     force: "yes"
-  with_items: "{{ hostvars[inventory_hostname]['pam'] |
-                  json_query(\"[?service=='\" + vars['outer_item'] + \"']\") }}"
+  loop: "{{ hostvars[inventory_hostname]['pam'] |
+    json_query(\"[?service=='\" + vars['outer_item'] + \"']\") |
+    flatten(levels=1) }}"
   loop_control:
     label: "{{ outer_item }}"
