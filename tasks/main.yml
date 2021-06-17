@@ -1,6 +1,8 @@
 ---
-- include_tasks: "pre_requisite.yml"
+- ansible.builtin.include_tasks:
+    file: "pre_requisite.yml"
   when:
-  - "hostvars[inventory_hostname]['pam'] is defined"
-  - "hostvars[inventory_hostname]['pam'] != ''"
-- import_tasks: "pam_executor.yml"
+    - "hostvars[inventory_hostname]['pam'] is defined"
+    - "hostvars[inventory_hostname]['pam'] != ''"
+- ansible.builtin.import_tasks:
+    file: "pam_executor.yml"

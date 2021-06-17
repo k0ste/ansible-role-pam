@@ -1,12 +1,12 @@
 ---
 - name: pam | Make pam.d directory
-  file:
+  ansible.builtin.file:
     path: "/etc/pam.d"
     state: "directory"
     owner: "root"
     group: "root"
     mode: "0755"
 - name: pam | Set facts about pam services
-  set_fact:
+  ansible.builtin.set_fact:
     pam_services: "{{ hostvars[inventory_hostname]['pam'] |
-                      json_query('[].service') }}"
+      community.general.json_query('[].service') }}"

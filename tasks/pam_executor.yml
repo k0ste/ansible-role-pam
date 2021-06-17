@@ -1,7 +1,8 @@
 ---
-- include_tasks: "deploy_pam.yml"
+- ansible.builtin.include_tasks:
+    file: "deploy_pam.yml"
   loop: "{{ vars['pam_services'] | flatten(levels=1) }}"
   loop_control:
     loop_var: "outer_item"
   when:
-  - "vars['pam_services'] is defined"
+    - "vars['pam_services'] is defined"
