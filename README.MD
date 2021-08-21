@@ -1,6 +1,6 @@
 # ansible-pam
 
-Deploy pam - Pluggable Authentication Modules for Linux
+PAM - Pluggable Authentication Modules for Linux
 
 ## Requirements
 
