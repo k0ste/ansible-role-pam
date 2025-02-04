@@ -1,5 +1,5 @@
 ---
-- name: pam | Deploy pam services
+- name: "pam | Deploy pam services"
   ansible.builtin.template:
     src: "pam.j2"
     dest: "{{ '/etc/pam.d/' + vars['outer_item'] }}"
