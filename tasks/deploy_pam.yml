@@ -12,3 +12,4 @@
     \"']\") | flatten(levels=1) }}"
   loop_control:
     label: "{{ vars['outer_item'] }}"
+    loop_var: "pam_service"

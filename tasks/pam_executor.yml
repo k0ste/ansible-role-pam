@@ -7,3 +7,6 @@
     loop_var: "outer_item"
   when:
     - "vars['pam_services'] is defined"
+    - "vars['pam_services'] != []"
+    - "vars['pam_services'] != ''"
+    - "vars['pam_services'] != None"

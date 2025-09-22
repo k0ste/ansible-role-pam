@@ -1,4 +1,8 @@
 ---
+- name: "pam | Set facts about pam services"
+  ansible.builtin.set_fact:
+    pam_services: "{{ hostvars[inventory_hostname]['pam'] |
+      community.general.json_query('[].service') }}"
 - name: "pam | Make pam.d directory"
   ansible.builtin.file:
     path: "/etc/pam.d"
@@ -6,7 +10,8 @@
     owner: "root"
     group: "root"
     mode: "0755"
-- name: "pam | Set facts about pam services"
-  ansible.builtin.set_fact:
-    pam_services: "{{ hostvars[inventory_hostname]['pam'] |
-      community.general.json_query('[].service') }}"
+  when:
+    - "hostvars[inventory_hostname]['pam'] is defined"
+    - "hostvars[inventory_hostname]['pam'] != []"
+    - "hostvars[inventory_hostname]['pam'] != ''"
+    - "hostvars[inventory_hostname]['pam'] != None"

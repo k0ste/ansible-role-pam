@@ -1,16 +1,16 @@
-{{ '## ' + item.service }}
+{{ '## ' + pam_service['service'] }}
 {{ '# ' + ansible_managed }}
-{{ '# ' + 'Do not edit manually' }}
+{{ '# Do not edit manually' }}
 
-{% for p in item.types %}
-{% if (p.type is defined and p.type != '')
-  and (p.control is defined and p.control != '')
-  and (p.module_path is defined and p.module_path != '') %}
-{% if p.module_arguments is defined and p.module_arguments != '' %}
-{{ p.type + ' ' + p.control + ' ' + p.module_path + ' ' +
-   p.module_arguments | join( ' ' ) }}
+{% for p in pam_service['types'] %}
+{% if (p['type'] is defined and p['type'] != '')
+  and (p['control'] is defined and p['control'] != '')
+  and (p['module_path'] is defined and p['module_path'] != '') %}
+{% if p['module_arguments'] is defined and p['module_arguments'] != '' %}
+{{ p['type'] + ' ' + p['control'] + ' ' + p['module_path'] + ' ' +
+   p['module_arguments'] | join( ' ' ) }}
 {% else %}
-{{ p.type + ' ' + p.control + ' ' + p.module_path }}
+{{ p['type'] + ' ' + p['control'] + ' ' + p['module_path'] }}
 {% endif %}
 {% endif %}
 {% endfor %}
